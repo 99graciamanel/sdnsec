@@ -20,27 +20,13 @@ class Lab1(Topo):
         s2 = self.addSwitch('s2')
 
         # Add (bidirectional) links
-        self.addLink(s1, s2, bw=20, max_queu_size=500)
-        self.addLink(h1, s1, bw=10, max_queu_size=500)
-        self.addLink(h2, s1, bw=10, max_queu_size=500)
-        self.addLink(h3, s2, bw=10, max_queu_size=500)
-        self.addLink(h4, s2, bw=10, max_queu_size=500)
-
-        # self.addLink(s1, s2)
-        # self.addLink(h1, s1)
-        # self.addLink(h2, s1)
-        # self.addLink(h3, s2)
-        # self.addLink(h4, s2)
-
+        self.addLink(s1, s2, cls=TCLink, bw=20, max_queu_size=500)
+        self.addLink(h1, s1, cls=TCLink, bw=10, max_queu_size=500)
+        self.addLink(h2, s1, cls=TCLink, bw=10, max_queu_size=500)
+        self.addLink(h3, s2, cls=TCLink, bw=10, max_queu_size=500)
+        self.addLink(h4, s2, cls=TCLink, bw=10, max_queu_size=500)
 
 # Adding the 'topos' dict with a key/value pair to
 topos = {'lab1': (lambda: Lab1())}
 
-# lab1 = Lab1()
-# net = Mininet(topo=lab1,
-#               build=False,
-#               host=CPULimitedHost,
-#               link=TCLink)
-# net.start()
-# CLI(net)
-# net.stop()
+
